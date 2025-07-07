@@ -1,3 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+  margin: 0px;
+  background-color: rgb(245, 236, 224);
+}
+header {
+  background-color: rgb(139, 69, 19);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.search_input {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid rgb(139, 69, 19);
+  color: rgb(139, 69, 19);
+  font-weight: 600;
+}
+
+.buttons_section button {
+  background-color: rgb(245, 236, 224);
+  color: rgb(139, 69, 19);
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid rgb(139, 69, 19);
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+nav a {
+  background-color: rgb(139, 69, 19);
+  color: rgb(245, 236, 224);
+  font-size: 35px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+nav a:hover {
+  transform: translateY(-4px);
+}
+
+
+
+nav {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  width: 80%;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.section_products {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section_popular {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+h2 {
+  color: rgb(139, 69, 19);
+}
 .product {
   background-color: white;
   padding: 20px;
@@ -5,7 +82,10 @@
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: block;
+  justify-items: center;
   transition: transform 0.3s ease;
+  margin: 15px;
 }
 
 .product:hover {
@@ -14,7 +94,7 @@
 
 .product img {
   width: 100%;
-  height: auto;
+  height: 180px;
   border-radius: 8px;
   margin-bottom: 15px;
 }
