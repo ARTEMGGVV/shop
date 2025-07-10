@@ -42,8 +42,6 @@ nav a:hover {
   transform: translateY(-4px);
 }
 
-
-
 nav {
   display: flex;
   text-align: center;
@@ -130,4 +128,63 @@ h2 {
 
 .product button:hover {
   background-color: #e65c00;
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-column h3 {
+  color: #f0c040;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  color: #f0c040;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #f0c040;
 }
