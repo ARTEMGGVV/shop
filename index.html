@@ -159,6 +159,162 @@
 
   <div class="footer-bottom">
     &copy; 2025 Магазин "Все для дому". Всі права захищені.
-  </div>
+  </div><div class="workspace">
+	<div class="ingredient-table">
+		<div class="ingredients">
+		</div>
+	</div>
+	<div class="order-table">
+	</div>
+	<div class="utencils-table">
+		<div class="utencils">
+			<div class="skewers container">
+
+			</div>
+			<div class="salt plate"></div>
+			<div class="cumin plate"></div>
+			<div class="spice plate"></div>
+		</div>
+	</div>
+	<div class="grill">
+		<div class="coal">
+			<div class="grill-skewer" style="left:5vmin;">
+				<div class="food-item lamb" style="bottom:29vmin;"></div>
+				<div class="food-item onion" style="bottom:27vmin;"></div>
+				<div class="food-item pepper" style="bottom:25vmin;"></div>
+				<div class="food-item lamb" style="bottom:22vmin;"></div>
+				<div class="food-item onion" style="bottom:20vmin;"></div>
+				<div class="food-item pepper" style="bottom:18vmin;"></div>
+				<div class="food-item lamb" style="bottom:15vmin;"></div>
+				<div class="food-item onion" style="bottom:13vmin;"></div>
+				<div class="food-item pepper" style="bottom:11vmin;"></div>
+				<div class="food-item lamb" style="bottom:8vmin;"></div>
+			</div>
+			<div class="grill-skewer" style="left:15vmin;">
+				<div class="food-item tofu" style="bottom:30vmin;"></div>
+				<div class="food-item eggplant" style="bottom:28vmin;"></div>
+				<div class="food-item tomato" style="bottom:25vmin;"></div>
+				<div class="food-item zucchini" style="bottom:23vmin;"></div>
+				<div class="food-item tofu" style="bottom:20vmin;"></div>
+				<div class="food-item eggplant" style="bottom:18vmin;"></div>
+				<div class="food-item tomato" style="bottom:15vmin;"></div>
+				<div class="food-item zucchini" style="bottom:13vmin;"></div>
+				<div class="food-item tofu" style="bottom:10vmin;"></div>
+				<div class="food-item eggplant" style="bottom:8vmin;"></div>
+			</div>
+		</div>
+	</div>
+	<div class="trash-area">
+		<div class="trashbox"></div>
+    <script>
+      const ingredients = [
+	"lamb",
+	"beef",
+	"chicken",
+	"salmon",
+	"pepper",
+	"onion",
+	"falafel",
+	"tofu",
+	"tomato",
+	"mushroom",
+	"zucchini",
+	"eggplant"
+];
+
+const container = document.getElementsByClassName("ingredients")[0];
+const skewer = document.getElementsByClassName("skewer")[0];
+const coal = document.getElementsByClassName("coal")[0];
+const trashbox = document.getElementsByClassName("trashbox")[0];
+let foodItems = [];
+let grillSkewers = [];
+
+ingredients.forEach((ingredient) => {
+	const div = document.createElement("div");
+	div.id = ingredient;
+	div.className = "container " + ingredient + "-pile";
+	div.addEventListener("click", () => addFoodItem(ingredient));
+	container.appendChild(div);
+});
+
+document.addEventListener("mousemove", (e) => {
+	let rect = document.body.getBoundingClientRect();
+	let x = e.clientX - rect.left;
+	let y = e.clientY - rect.top;
+	skewer.style.left = `${x}px`;
+	skewer.style.top = `${y}px`;
+});
+
+function addFoodItem(name) {
+	const totalHeight = foodItems.reduce(
+		(sum, item) => sum + getItemHeight(item),
+		0
+	);
+	if (totalHeight >= 24) return;
+
+	const foodItem = document.createElement("div");
+	foodItem.className = `food-item ${name}`;
+	const itemHeight = getItemHeight(name);
+	const baseOffset = 8;
+	foodItem.style.bottom = `${baseOffset + totalHeight}vmin`;
+	foodItem.style.left = "50%";
+	foodItem.style.transform = "translateX(-50%)";
+	skewer.appendChild(foodItem);
+	foodItems.push(name);
+}
+
+function getItemHeight(name) {
+	switch (name) {
+		case "falafel":
+			return 4;
+		case "eggplant":
+			return 2;
+		case "zucchini":
+			return 2;
+		case "mushroom":
+			return 2;
+		case "onion":
+			return 2;
+		case "pepper":
+			return 2;
+		default:
+			return 3;
+	}
+}
+
+coal.addEventListener("click", () => {
+	if (foodItems.length === 0 || grillSkewers.length >= 4) return;
+
+	const grillSkewer = document.createElement("div");
+	grillSkewer.className = "grill-skewer";
+	const position = 25 + grillSkewers.length * 10;
+	grillSkewer.style.left = `${position}vmin`;
+	coal.appendChild(grillSkewer);
+	grillSkewers.push(grillSkewer);
+
+	let totalHeight = 0;
+	foodItems.forEach((name) => {
+		const foodItem = document.createElement("div");
+		foodItem.className = `food-item ${name}`;
+		const itemHeight = getItemHeight(name);
+		foodItem.style.bottom = `${8 + totalHeight}vmin`;
+		foodItem.style.left = "50%";
+		foodItem.style.transform = "translateX(-50%)";
+		grillSkewer.appendChild(foodItem);
+		totalHeight += itemHeight;
+	});
+
+	skewer.innerHTML = "";
+	foodItems = [];
+});
+
+trashbox.addEventListener("click", () => {
+	skewer.innerHTML = "";
+	foodItems = [];
+});
+</script>
+	</div>
+</div>
+<div class="skewer"></div>
     </footer>
 </body>
